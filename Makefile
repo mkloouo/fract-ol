@@ -6,7 +6,7 @@
 #    By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/20 14:34:22 by modnosum          #+#    #+#              #
-#    Updated: 2018/03/12 19:36:24 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/14 18:38:50 by modnosum         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ CFLAGS					= -Wall -Wextra -Werror -pedantic
 MFLAGS					= --no-print-directory -C
 
 # Target binary name
-NAME					:= fract-ol
+NAME					:= fractol
 
 # Directories
 SRC_DIR					= ./sources
