@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   get_rangei.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 17:21:28 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 20:04:33 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 13:25:13 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 13:25:55 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftmath.h>
+#include <ftrange.h>
 
-double					ft_map(double value, t_range *from,
-t_range *to)
+t_rangei				get_rangei(int min, int max)
 {
-	double				mvalue;
-	double				slope;
+	t_rangei			ri;
 
-	if ((from->max - from->min) != 0)
-		slope = (to->max - to->min) / (from->max - from->min);
-	else
-		return (0);
-	mvalue = to->min + slope * (value - from->min);
-	return (mvalue);
+	ri.min = min;
+	ri.max = max;
+	return (ri);
 }

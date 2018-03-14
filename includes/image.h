@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:18:14 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 20:08:59 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:41:05 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_image					*get_image(int width, int height);
 void					delete_image(t_image **ip);
 
 void					draw_line(t_image *i, t_vec3i *p1, t_vec3i *p2);
-void					put_pixel(t_image *i, t_vec3i *p);
+void					put_pixel(t_image *img, t_vec3i v);
 unsigned int			map_color(unsigned int c1, unsigned int c2,
 									float ratio);
 

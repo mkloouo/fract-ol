@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   div_complex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 13:47:31 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 14:18:44 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <ftcomplex.h>
+#include <math.h>
 
-void					update_window(t_window *w)
+t_complex				div_complex(t_complex a, t_complex b)
 {
-	t_image				*image;
+	t_complex			c;
+	float				bpow2sum;
 
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
+	c.r = 0;
+	c.i = 0;
+	if (b.r != 0 || b.i != 0)
 	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
+		bpow2sum = pow(b.r, 2) + pow(b.i, 2);
+		c.r = (a.r * b.r + a.i * b.i) / (bpow2sum);
+		c.i = (a.i * b.r - a.r * b.i) / (bpow2sum);
 	}
-	w->image = image;
+	return (c);
 }

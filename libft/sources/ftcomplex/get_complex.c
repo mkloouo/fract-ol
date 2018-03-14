@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   get_complex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 20:26:32 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 20:29:18 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 13:36:21 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 14:18:54 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
-#include <ftio.h>
-#include <ftstring.h>
+#include <ftcomplex.h>
 
-void					fractol(char *fractal)
+t_complex				get_complex(float r, float i)
 {
-	if (ft_strcmp("Mandelbrot", fractal) == 0)
-		ft_putstr("you chose: ");
-	else
-		ft_putstr("invalid fractal: ");
-	ft_putendl(fractal);
+	t_complex			c;
+
+	c.r = r;
+	c.i = i;
+	return (c);
 }

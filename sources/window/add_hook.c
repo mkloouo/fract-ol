@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 20:14:35 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 20:20:28 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:21:08 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void *func_argument)
 	else if (type == MOUSE_BUTTON_PRESS || type == MOUSE_BUTTON_RELEASE)
 		mask = (type == MOUSE_BUTTON_RELEASE) ? MOUSE_BUTTON_RELEASE_MASK
 			: MOUSE_BUTTON_PRESS_MASK;
-	else if (type == MOTION_NOTIFY)
-		mask = MOTION_NOTIFY_MASK;
+	else if (type == MOTION_NOTIFY || type == EXPOSE)
+		mask = (type == EXPOSE) ? (EXPOSE_MASK) : (MOTION_NOTIFY_MASK);
 	else
 		return ;
 	mlx_hook(w->window, type, mask, func, func_argument);

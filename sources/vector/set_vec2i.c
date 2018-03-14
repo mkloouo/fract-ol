@@ -6,17 +6,14 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 03:24:33 by modnosum          #+#    #+#             */
-/*   Updated: 2018/02/22 03:24:34 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:28:29 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vector.h>
 
-void					set_vec2i(t_vec2i *v, int x, int y)
+void					set_vec2i(t_vec2i v, int x, int y)
 {
-	if (v)
-	{
-		v->x = x;
-		v->y = y;
-	}
+	v.x = x;
+	v.y = y;
 }

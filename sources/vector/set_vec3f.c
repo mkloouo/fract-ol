@@ -6,18 +6,15 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 03:24:54 by modnosum          #+#    #+#             */
-/*   Updated: 2018/02/22 03:24:54 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:28:41 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vector.h>
 
-void					set_vec3f(t_vec3f *v, float x, float y, float z)
+void					set_vec3f(t_vec3f v, float x, float y, float z)
 {
-	if (v)
-	{
-		v->x = x;
-		v->y = y;
-		v->z = z;
-	}
+	v.x = x;
+	v.y = y;
+	v.z = z;
 }

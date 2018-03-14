@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:12:20 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 20:20:33 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:20:19 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 # define MOUSE_BUTTON_RELEASE 5
 # define MOUSE_BUTTON_RELEASE_MASK (1L << 3)
 # define MOTION_NOTIFY 6
+# define MOUSE_MOVE MOTION_NOTIFY
 # define MOTION_NOTIFY_MASK (1L << 6)
+
+# define EXPOSE 12
+# define EXPOSE_MASK (1L << 15)
 
 typedef struct			s_window
 {

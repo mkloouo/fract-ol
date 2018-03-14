@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:19:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 19:55:40 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 16:59:32 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@
 
 # define SCALE_Z(B) (SCALE_Z_P(B) || SCALE_Z_M(B))
 
-# define ZOOM_IN(B, S) (B == NUM_PLUS_KC || (B == EQUAL_KC && S))
-# define ZOOM_OUT(B) (B == NUM_MINUS_KC || B == MINUS_KC)
+# define ZOOM_IN(B) (B == NUM_PLUS_KC)
+# define ZOOM_OUT(B) (B == NUM_MINUS_KC)
 
-# define ZOOM_BUTTON(B, S) (ZOOM_IN(B, S) || ZOOM_OUT(B))
+# define ZOOM_BUTTON(B) (ZOOM_IN(B) || ZOOM_OUT(B))
 
 # define RESET_BUTTON(B) (B == R_KC)
 

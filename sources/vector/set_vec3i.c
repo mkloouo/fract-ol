@@ -6,18 +6,15 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 20:42:11 by modnosum          #+#    #+#             */
-/*   Updated: 2018/02/23 20:42:29 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/14 17:28:53 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vector.h>
 
-void					set_vec3i(t_vec3i *v, int x, int y, int z)
+void					set_vec3i(t_vec3i v, int x, int y, int z)
 {
-	if (v)
-	{
-		v->x = x;
-		v->y = y;
-		v->z = z;
-	}
+	v.x = x;
+	v.y = y;
+	v.z = z;
 }

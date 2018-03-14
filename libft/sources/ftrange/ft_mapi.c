@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   ft_mapi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 13:24:07 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 13:29:58 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <ftrange.h>
 
-void					update_window(t_window *w)
+int						ft_mapi(int value, t_rangei from, t_rangei to)
 {
-	t_image				*image;
+	int					mvalue;
+	int					slope;
 
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
-	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
-	}
-	w->image = image;
+	if ((from.max - from.min) != 0)
+		slope = (to.max - to.min) / (from.max - from.min);
+	else
+		return (0);
+	mvalue = to.min + slope * (value - from.min);
+	return (mvalue);
 }

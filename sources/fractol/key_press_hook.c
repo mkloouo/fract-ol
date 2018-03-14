@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   key_press_hook.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 16:55:19 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 18:08:17 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <fractol.h>
+#include <stdlib.h>
 
-void					update_window(t_window *w)
+int						key_press_hook(int btn, t_fwin *fw)
 {
-	t_image				*image;
-
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
+	if (QUIT_BUTTON(btn))
+		exit(1);
+	else if (ZOOM_BUTTON(btn))
+		fw->zoom += (ZOOM_IN(btn) ? (0.01) : (-0.01));
+	else if (MOVE_BUTTON(btn))
 	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
+		if (MOVE_HOR(btn))
+			fw->mx += (MOVE_RIGHT(btn) ? (-0.5) : (0.5));
+		else
+			fw->my += (MOVE_UP(btn) ? (0.5) : (-0.5));
 	}
-	w->image = image;
+	else
+		return (-1);
+	return (expose_hook(fw));
 }

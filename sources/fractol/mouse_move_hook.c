@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   mouse_move_hook.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 17:42:29 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <fractol.h>
 
-void					update_window(t_window *w)
+int						mouse_move_hook(int x, int y, t_fwin *fw)
 {
-	t_image				*image;
-
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
-	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
-	}
-	w->image = image;
+	if (IN_IMAGE(x, y, fw->window->image->width, fw->window->image->height))
+		set_vec2i(*fw->window->mouse->cv, x, y);
+	return (1);
 }

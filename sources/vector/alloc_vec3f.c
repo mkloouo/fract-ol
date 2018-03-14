@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   alloc_vec3f.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 17:52:05 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 17:53:31 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <vector.h>
+#include <ftstdlib.h>
 
-void					update_window(t_window *w)
+t_vec3f					*alloc_vec3f(float x, float y, float z)
 {
-	t_image				*image;
+	t_vec3f			*v;
 
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
+	if ((v = (t_vec3f*)ft_memalloc(sizeof(t_vec3f))))
 	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
+		v->x = x;
+		v->y = y;
+		v->z = z;
 	}
-	w->image = image;
+	return (v);
 }

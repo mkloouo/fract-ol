@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_window.c                                    :+:      :+:    :+:   */
+/*   get_fractal_type.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/14 14:27:40 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/14 14:43:16 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window.h>
-#include <mlx.h>
+#include <fractol.h>
+#include <ftstring.h>
 
-void					update_window(t_window *w)
+int						get_fractal_type(char *name)
 {
-	t_image				*image;
-
-	image = get_image(w->image->width, w->image->height);
-	if (w->image)
-	{
-		mlx_put_image_to_window(w->server, w->window,
-								w->image->ip, 0, 0);
-		delete_image(&w->image);
-	}
-	w->image = image;
+	if (ft_strcmp(name, MANDELBROT_NAME) == 0)
+		return (MANDELBROT_TYPE);
+	else
+		return (-1);
 }
