@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 18:13:46 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 18:14:18 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/16 03:33:06 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_fwin					init_fw(int ac, char **av)
 {
+	t_fwin				fw;
+
 	fw.window = get_window(av[0], WIN_DEF_WIDTH, WIN_DEF_HEIGHT);
 	fw.zoom = DEFAULT_ZOOM;
 	fw.mx = 0;

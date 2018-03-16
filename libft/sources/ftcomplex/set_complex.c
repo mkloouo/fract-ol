@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 13:36:45 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 13:36:59 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/15 18:57:37 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void					set_complex(t_complex c, float r, float i)
 {
+	(void)c;
 	c.r = r;
 	c.i = i;
 }
