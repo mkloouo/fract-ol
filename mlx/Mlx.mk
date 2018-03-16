@@ -6,7 +6,7 @@
 #    By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/26 15:38:12 by modnosum          #+#    #+#              #
-#    Updated: 2018/02/23 18:47:27 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/16 03:12:16 by modnosum         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,13 +22,13 @@ MLX_I					:=
 MLX_L					:= -l mlx
 
 ifeq (Darwin,$(UNAME))
-	DARWIN_MINOR_VERSION	:= $(shell sw_vers -productVersion | cut -d . -f 2)
+	DARWIN_MINOR_VERSION		:= $(shell sw_vers -productVersion | cut -d . -f 2)
 	ifeq (1,$(shell echo "$(DARWIN_MINOR_VERSION) >= 13" | bc))
-		MLX_PATH			:= ./mlx/mlx_macos/
+		MLX_PATH				:= ./mlx/mlx_macos/
 	else
-		MLX_PATH			:= 1
+		MLX_PATH				:= 1
 	endif
-	MLX_L				+= -framework OpenGL -framework AppKit
+	MLX_L					+= -framework OpenGL -framework AppKit
 else
 	MLX_PATH				:= ./mlx/mlx_other/
 	MLX_L					+= -l Xext -l X11

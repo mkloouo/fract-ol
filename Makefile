@@ -6,7 +6,7 @@
 #    By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/20 14:34:22 by modnosum          #+#    #+#              #
-#    Updated: 2018/03/14 18:38:50 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/16 03:30:54 by modnosum         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,12 +28,12 @@ INC_DIR					= ./includes
 # Source and object lists as well as directories for objects
 SRCS					:= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS					:= $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(SRCS:.c=.o))
-OBJ_DIRS				:= $(patsubst $(SRC_DIR)%, $(OBJ_DIR)%,$(shell\
+OBJ_DIRS				:= $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(shell\
 find $(SRC_DIR) -type d))
 
 # Add outside variables
 FT_PATH					:= ./libft
-MLX_PATH				= ./mlx
+MLX_PATH				:= ./mlx
 include $(FT_PATH)/Libft.mk
 include $(MLX_PATH)/Mlx.mk
 
