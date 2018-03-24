@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:32:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 18:08:47 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 19:32:07 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void					update_fractal_window(t_fractal *f)
 		while (j < f->window->width)
 		{
 			set_vec3i(&pixel, i, j, f->fractals[f->type](f, i, j));
-			pixel.z = RGB_COLOR(00, 00, pixel.z % 255, 00);
+			pixel.z = RGB_COLOR(00, 00, 00, pixel.z * 20% 255);
 			put_pixel(f->window->image, &pixel);
 			j++;
 		}

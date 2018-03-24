@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:18:32 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:57:39 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 21:50:39 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_complex				sub_complex(t_complex *a, t_complex *b);
 t_complex				mult_complex(t_complex *a, t_complex *b);
 t_complex				div_complex(t_complex *a, t_complex *b);
 
-t_complex				pow_complex(t_complex *c, float power);
+t_complex				pow_complex(t_complex *c, int power);
 float					mod_complex(t_complex *c);
 float					arg_complex(t_complex *c);
 
