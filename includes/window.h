@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:12:20 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 16:20:19 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:35:39 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct			s_window
 	t_mouse				*mouse;
 	t_keyboard			*keyboard;
 	t_image				*image;
+	int					width;
+	int					height;
 }						t_window;
 
 t_window				*get_window(char *title, int width, int height);

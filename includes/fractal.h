@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/16 03:36:25 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:52:00 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTAL_H
+# define FRACTAL_H
 
 # include <window.h>
 
 # define FRACTALS 1
 
-# define MANDELBROT_TYPE 1
+# define MANDELBROT_TYPE 0
 # define MANDELBROT_NAME "Mandelbrot"
 
-# define DEFAULT_ZOOM -2
-# define DEFAULT_ITERATIONS 100
+# define DEFAULT_ZOOM 0
+# define DEFAULT_ITERATIONS 50
 # define DEFAULT_BAIL 16
 
-typedef struct			s_fwin
+typedef struct			s_fractal
 {
 	t_window			*window;
 	int					type;
@@ -33,16 +33,21 @@ typedef struct			s_fwin
 	float				my;
 	int					iter;
 	int					bail;
-	int					((*fractals[FRACTALS])(struct s_fwin *,int,int));
-}						t_fwin;
+	int					(*fractals[FRACTALS])(struct s_fractal *f, int i, int j);
+}						t_fractal;
 
-t_fwin					init_fw(int ac, char **av);
+int						init_fractal(t_fractal **f, int ac, char **av);
+void					init_fractals(t_fractal *f);
+void					delete_fractal(t_fractal **fp);
 
-int						mouse_move_hook(int x, int y, t_fwin *fw);
-int						key_press_hook(int btn, t_fwin *fw);
-int						expose_hook(t_fwin *fw);
+void					update_fractal_window(t_fractal *f);
 
-void					print_fractol_usage(char *name);
-int						get_fractal_type(char *name);
+int						mandelbrot(t_fractal *f, int i, int j);
+
+int						mouse_move_hook(int x, int y, t_fractal *f);
+int						key_press_hook(int btn, t_fractal *f);
+
+void					print_usage(char *name);
+int						get_fractal(char *name);
 
 #endif

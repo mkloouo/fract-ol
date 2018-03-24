@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_vec2i.c                                        :+:      :+:    :+:   */
+/*   init_fractals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 03:24:33 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:40:59 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/24 17:29:51 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/24 17:44:54 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector.h>
+#include <fractal.h>
 
-void					set_vec2i(t_vec2i *v, int x, int y)
+void					init_fractals(t_fractal *f)
 {
-	if (v)
-	{
-		v->x = x;
-		v->y = y;
-	}
+	f->fractals[0] = &mandelbrot;
 }

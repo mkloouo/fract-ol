@@ -6,14 +6,14 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:05:27 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 14:19:32 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 18:00:04 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ftcomplex.h>
 #include <math.h>
 
-t_complex				pow_complex(t_complex c, float power)
+t_complex				pow_complex(t_complex *c, float power)
 {
 	t_complex			p;
 	float				mod;

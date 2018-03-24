@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_move_hook.c                                  :+:      :+:    :+:   */
+/*   delete_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:42:29 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/24 17:16:43 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/24 17:18:09 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include <ftstdlib.h>
+#include <fractal.h>
 
-int						mouse_move_hook(int x, int y, t_fwin *fw)
+void					delete_fractal(t_fractal **fp)
 {
-	if (IN_IMAGE(x, y, fw->window->image->width, fw->window->image->height))
-		set_vec2i(*fw->window->mouse->cv, x, y);
-	return (1);
+	if (fp && *fp)
+	{
+		delete_window(&(*fp)->window);
+		ft_memdel((void**)fp);
+	}
 }

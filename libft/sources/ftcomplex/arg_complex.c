@@ -6,14 +6,14 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:15:16 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 14:15:46 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:58:38 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ftcomplex.h>
 #include <math.h>
 
-float					arg_complex(t_complex c)
+float					arg_complex(t_complex *c)
 {
-	return (atan2(c.r, c.i));
+	return (atan2(c->r, c->i));
 }

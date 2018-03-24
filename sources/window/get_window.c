@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 19:13:40 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 16:50:59 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:35:51 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_window				*get_window(char *title, int width, int height)
 		w->server = get_server();
 		w->window = mlx_new_window(w->server, width, height, title);
 		w->mouse = get_mouse();
+		w->width = width;
+		w->height = height;
 		w->keyboard = get_keyboard();
 		w->image = get_image(width, height);
 	}

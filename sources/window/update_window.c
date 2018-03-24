@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 19:35:57 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 17:21:42 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:36:03 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void					update_window(t_window *w)
 {
 	t_image				*image;
 
-	image = get_image(w->image->width, w->image->height);
+	image = get_image(w->width, w->height);
 	if (w->image)
 	{
 		mlx_put_image_to_window(w->server, w->window,

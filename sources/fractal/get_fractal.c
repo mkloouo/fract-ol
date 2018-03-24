@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_fractol_usage.c                              :+:      :+:    :+:   */
+/*   get_fractal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 14:45:23 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 14:50:15 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/24 17:00:30 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/24 17:52:22 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
-#include <ftio.h>
+#include <fractal.h>
+#include <ftstring.h>
 
-void					print_fractol_usage(char *name)
+int						get_fractal(char *name)
 {
-	ft_putstr("usage: ");
-	ft_putstr(name);
-	ft_putendl(" fractal-type\nWhere fractal-type:\n\tMandelbrot");
+	if (ft_strcmp(name, MANDELBROT_NAME) == 0)
+		return (MANDELBROT_TYPE);
+	else
+		return (-1);
 }

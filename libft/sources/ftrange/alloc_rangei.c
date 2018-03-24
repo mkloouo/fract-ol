@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_vec2i.c                                        :+:      :+:    :+:   */
+/*   alloc_rangei.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 03:24:33 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:40:59 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/24 16:50:19 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/24 16:52:20 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector.h>
+#include <ftstdlib.h>
+#include <ftrange.h>
 
-void					set_vec2i(t_vec2i *v, int x, int y)
+t_rangei				*alloc_rangei(int min, int max)
 {
-	if (v)
+	t_rangei			*ri;
+
+	if ((ri = (t_rangei*)ft_memalloc(sizeof(t_rangei))))
 	{
-		v->x = x;
-		v->y = y;
+		ri->min = min;
+		ri->max = max;
 	}
+	return (ri);
 }

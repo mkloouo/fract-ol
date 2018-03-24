@@ -6,15 +6,14 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 13:36:45 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/15 18:57:37 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/24 18:00:22 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ftcomplex.h>
 
-void					set_complex(t_complex c, float r, float i)
+void					set_complex(t_complex *c, float r, float i)
 {
-	(void)c;
-	c.r = r;
-	c.i = i;
+	c->r = r;
+	c->i = i;
 }
