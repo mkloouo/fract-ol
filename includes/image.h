@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:18:14 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:39:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 18:57:27 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 ** Height
 */
 
-#include <vector.h>
+# include <vector.h>
 
 typedef struct			s_image
 {

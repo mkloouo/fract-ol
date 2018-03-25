@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_complex.c                                      :+:      :+:    :+:   */
+/*   mouse_press_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 13:36:45 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 18:00:22 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/25 19:23:06 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/25 19:32:34 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftcomplex.h>
+#include <fractal.h>
 
-void					set_complex(t_complex *c, float r, float i)
+int						mouse_press_hook(int btn, int x, int y, t_fractal *f)
 {
-	c->r = r;
-	c->i = i;
+	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
+	{
+		set_vec2i(f->window->mouse->pv, x, y);
+		f->window->mouse->btn = btn;
+		f->window->mouse->pressed = 1;
+	}
+	return (0);
 }

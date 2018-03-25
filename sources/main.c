@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:37:28 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:53:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 19:01:16 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int						main(int ac, char **av)
 	if (init_fractal(&f, ac, av))
 		start_server();
 	print_usage(av[0]);
-    return (1);
+	return (1);
 }

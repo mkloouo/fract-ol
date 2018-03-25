@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:19:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 16:59:32 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 21:29:29 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@
 
 #  define NUM_PLUS_KC 69
 #  define NUM_MINUS_KC 78
+#  define NUM_ONE_KC 83
+#  define NUM_TWO_KC 84
+#  define NUM_THREE_KC 85
 
 # elif defined(__linux__)
 

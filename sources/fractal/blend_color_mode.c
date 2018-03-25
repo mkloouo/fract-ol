@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_complex.c                                      :+:      :+:    :+:   */
+/*   blend_color_mode.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 13:36:21 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/14 14:18:54 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/25 21:00:05 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/25 21:00:06 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftcomplex.h>
+#include <fractal.h>
 
-t_complex				get_complex(float r, float i)
+int						blend_color_mode(int iterations)
 {
-	t_complex			c;
-
-	c.r = r;
-	c.i = i;
-	return (c);
+	return (RGB_COLOR(00, iterations % 255, iterations % 255,
+			iterations % 255));
 }

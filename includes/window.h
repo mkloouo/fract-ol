@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:12:20 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:35:39 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 18:57:49 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ t_window				*get_window(char *title, int width, int height);
 void					delete_window(t_window **wp);
 
 void					update_window(t_window *w);
-void					put_string_to_window(t_window *w, char *str, t_vec2i *pos,
-unsigned int color);
+void					put_string_to_window(t_window *w, char *str,
+											t_vec2i *pos, unsigned int color);
 
 void					add_hook(t_window *w, int type, int (*func)(),
 void *func_argument);

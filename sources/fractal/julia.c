@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:20:53 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/25 21:28:47 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void				complex_pow_2(float *a, float *b)
 	*b = tb;
 }
 
-int						mandelbrot(t_fractal *f, int i, int j)
+int						julia(t_fractal *f, int i, int j)
 {
 	int					n;
 	float				a;
@@ -34,12 +34,14 @@ int						mandelbrot(t_fractal *f, int i, int j)
 	float				ib;
 
 	n = 0;
-	ia = ft_mapf(i - f->mx, get_rangef(0, f->window->height),
-				 get_rangef(-1 * f->zoom, f->zoom));
-	ib = ft_mapf(j - f->my, get_rangef(0, f->window->width),
-				 get_rangef(-1 * f->zoom, f->zoom));
+	ia = ft_mapf(f->window->mouse->cv->y, get_rangef(0, f->window->height),
+				 get_rangef(-1, 1));
+	ib = ft_mapf(f->window->mouse->cv->x, get_rangef(0, f->window->width),
+				 get_rangef(-1, 1));
 	a = ia;
 	b = ib;
+	(void)i;
+	(void)j;
 	while (n < f->iter)
 	{
 		if (a * a + b * b > f->bail)

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_complex.c                                      :+:      :+:    :+:   */
+/*   mouse_release_hook.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 13:38:28 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/24 17:59:43 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/25 19:28:12 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/25 19:33:56 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftcomplex.h>
+#include <fractal.h>
 
-t_complex				add_complex(t_complex *a, t_complex *b)
+int						mouse_release_hook(int btn, int x, int y, t_fractal *f)
 {
-	t_complex			c;
-
-	c.r = a->r + b->r;
-	c.i = a->i + b->i;
-	return (c);
+	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
+	{
+		(void)x;
+		(void)y;
+		f->window->mouse->btn = btn;
+		f->window->mouse->pressed = 0;
+	}
+	return (0);
 }
