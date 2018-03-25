@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:05:50 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 23:35:22 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void					init_fractal_functions(t_fractal *f)
 {
 	f->fractals[0] = &mandelbrot;
+	f->fractals[1] = &julia;
 }
 
 static void					init_color_functions(t_fractal *f)

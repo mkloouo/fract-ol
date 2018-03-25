@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:15:41 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 23:49:44 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int						mouse_move_hook(int x, int y, t_fractal *f)
 						f->window->mouse->cv->y);
 			update_fractal_window(f);
 		}
+		if (f->type == JULIA_TYPE)
+			update_fractal_window(f);
 	}
 	return (1);
 }

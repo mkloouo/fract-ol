@@ -6,7 +6,7 @@
 #    By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/20 14:34:22 by modnosum          #+#    #+#              #
-#    Updated: 2018/03/16 03:30:54 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/25 23:30:39 by modnosum         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,7 +39,7 @@ include $(MLX_PATH)/Mlx.mk
 
 # Add dirs and libs
 IFLAGS					+= -I $(INC_DIR)
-LFLAGS					+= -lm
+LFLAGS					+= -lm -pthread
 
 # Phony rules
 .PHONY: all clean fclean re c f
