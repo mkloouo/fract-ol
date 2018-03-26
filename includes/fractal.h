@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 18:42:24 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:16:51 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTAL_H
 
 # include <window.h>
+# include <pthread.h>
 
 # define FRACTALS 2
 # define COLOR_MODES 1
@@ -24,7 +25,7 @@
 # define JULIA_TYPE 1
 # define JULIA_NAME "Julia"
 
-# define DEFAULT_ZOOM 1
+# define DEFAULT_ZOOM 2
 # define DEFAULT_MX 0
 # define DEFAULT_MY 0
 # define DEFAULT_ITERATIONS 100
@@ -36,7 +37,8 @@
 typedef struct			s_fractal
 {
 	t_window			*window;
-	int					type;
+	int					fractal_type;
+	int					color_mode;
 	float				zoom;
 	float				mx;
 	float				my;
@@ -44,7 +46,8 @@ typedef struct			s_fractal
 	int					bail;
 	int					(*fractals[FRACTALS])(struct s_fractal *f,
 												int i, int j);
-	int					(*color_modes[COLOR_MODES])(int iterations, int max_iter);
+	int					(*color_modes[COLOR_MODES])(int iterations,
+	int max_iter);
 }						t_fractal;
 
 typedef struct			s_fractal_thread
@@ -54,6 +57,7 @@ typedef struct			s_fractal_thread
 	int					from_x;
 	int					to_x;
 	t_fractal			*fractal;
+	pthread_t			thread;
 }						t_fractal_thread;
 
 int						init_fractal(t_fractal **f, int ac, char **av);

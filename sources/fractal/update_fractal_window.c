@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:32:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 18:40:11 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:23:03 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ static void				*update_fractal_image(void *arg)
 		while (j < ft->to_x)
 		{
 			pixel = get_vec3i(i, j,
-			ft->fractal->fractals[ft->fractal->type](ft->fractal, i, j));
-			pixel.z = ft->fractal->color_modes[0](pixel.z, ft->fractal->iter);
+			ft->fractal->fractals[ft->fractal->fractal_type](ft->fractal,
+				i, j));
+			pixel.z = ft->fractal->color_modes
+				[ft->fractal->color_mode](pixel.z, ft->fractal->iter);
 			put_pixel(ft->fractal->window->image, &pixel);
 			j++;
 		}
@@ -62,7 +64,6 @@ void					update_fractal_window(t_fractal *f)
 {
 	int					i;
 	int					j;
-	pthread_t			threads[FRACTAL_THREADS_X * FRACTAL_THREADS_Y];
 	t_fractal_thread	ft[FRACTAL_THREADS_X * FRACTAL_THREADS_Y];
 
 	i = 0;
@@ -73,7 +74,7 @@ void					update_fractal_window(t_fractal *f)
 			ft[i * FRACTAL_THREADS_X + j] = set_fractal_thread_props(i,
 									j, f->window->width, f->window->height);
 			ft[i * FRACTAL_THREADS_X + j].fractal = f;
-			pthread_create(&threads[i * FRACTAL_THREADS_X + j], NULL,
+			pthread_create(&(ft[i * FRACTAL_THREADS_X + j].thread), NULL,
 					&update_fractal_image, &ft[i * FRACTAL_THREADS_X + j]);
 			j++;
 		}
@@ -81,6 +82,6 @@ void					update_fractal_window(t_fractal *f)
 	}
 	i = 0;
 	while (i < FRACTAL_THREADS_X * FRACTAL_THREADS_Y)
-		pthread_join(threads[i++], NULL);
+		pthread_join(ft[i++].thread, NULL);
 	update_window(f->window);
 }

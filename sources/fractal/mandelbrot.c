@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:20:53 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:20:47 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int						mandelbrot(t_fractal *f, int i, int j)
 
 	n = 0;
 	ia = ft_mapf(i - f->mx, get_rangef(0, f->window->height),
-				 get_rangef(-1 * f->zoom, f->zoom));
+				get_rangef(-1 * f->zoom, f->zoom));
 	ib = ft_mapf(j - f->my, get_rangef(0, f->window->width),
-				 get_rangef(-1 * f->zoom, f->zoom));
+				get_rangef(-1 * f->zoom, f->zoom));
 	a = ia;
 	b = ib;
 	while (n < f->iter)

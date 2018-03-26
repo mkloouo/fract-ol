@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 23:35:22 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:24:06 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void					init_fractal_functions(t_fractal *f)
 
 static void					init_color_functions(t_fractal *f)
 {
+    f->color_mode = 0;
 	f->color_modes[0] = &blend_color_mode;
 }
 
@@ -45,7 +46,7 @@ int							init_fractal(t_fractal **f, int ac, char **av)
 {
 	if (ac == 2 && f && (*f = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
 	{
-		if (((*f)->type = get_fractal(av[1])) == -1)
+		if (((*f)->fractal_type = get_fractal(av[1])) == -1)
 		{
 			ft_memdel((void**)f);
 			return (0);
