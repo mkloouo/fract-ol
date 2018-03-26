@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 19:20:47 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 21:07:26 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ int						mandelbrot(t_fractal *f, int i, int j)
 	float				ib;
 
 	n = 0;
-	ia = ft_mapf(i - f->mx, get_rangef(0, f->window->height),
-				get_rangef(-1 * f->zoom, f->zoom));
-	ib = ft_mapf(j - f->my, get_rangef(0, f->window->width),
-				get_rangef(-1 * f->zoom, f->zoom));
+	ia = ((2 * (float)f->zoom * (i - f->mx)) / (f->window->height)) - f->zoom;
+	ib = ((2 * (float)f->zoom * (j - f->my)) / (f->window->width)) - f->zoom;
 	a = ia;
 	b = ib;
 	while (n < f->iter)

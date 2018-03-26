@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press_hook.c                                 :+:      :+:    :+:   */
+/*   green_color_mode.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/25 19:23:06 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 19:32:34 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/26 20:16:32 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/26 21:13:06 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 
-int						mouse_press_hook(int btn, int x, int y, t_fractal *f)
+int						green_color_mode(t_fractal *f, int i)
 {
-	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
-	{
-		set_vec2i(f->window->mouse->pv, x, y);
-		f->window->mouse->btn = btn;
-		f->window->mouse->pressed = 1;
-	}
-	return (0);
+	float				normalized;
+	int					mapped;
+
+	normalized = i / (float)f->iter;
+	mapped = (int)(255 * normalized / 1);
+	return (RGB_COLOR(0, 0, mapped % 255, 0));
 }

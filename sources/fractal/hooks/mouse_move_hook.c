@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_move_hook.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 23:49:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 21:12:43 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,25 @@ int						mouse_move_hook(int x, int y, t_fractal *f)
 {
 	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
 	{
-		f->window->mouse->cv->x = x;
-		f->window->mouse->cv->y = y;
-		if (f->window->mouse->pressed && LEFT_BUTTON(f->window->mouse->btn))
+		set_vec2i(f->window->mouse->current, x, y);
+		if (f->window->mouse->current->x != f->window->mouse->previous->x &&
+			f->window->mouse->current->x != f->window->mouse->previous->x)
 		{
-			f->mx += f->window->mouse->cv->x - f->window->mouse->pv->x;
-			f->my += f->window->mouse->cv->y - f->window->mouse->pv->y;
-			set_vec2i(f->window->mouse->pv, f->window->mouse->cv->x,
-						f->window->mouse->cv->y);
-			update_fractal_window(f);
+			if (f->window->mouse->pressed && LEFT_BUTTON(f->window->mouse->btn))
+			{
+				f->mx += f->window->mouse->current->x -
+					f->window->mouse->press->x;
+				f->my += f->window->mouse->current->y -
+					f->window->mouse->press->y;
+				set_vec2i(f->window->mouse->press, f->window->mouse->current->x,
+						f->window->mouse->current->y);
+			}
+			else if (f->fractal_type == JULIA_TYPE)
+				;
+			else
+				return (-1);
+			update_fractal(f);
 		}
-		if (f->type == JULIA_TYPE)
-			update_fractal_window(f);
 	}
 	return (1);
 }

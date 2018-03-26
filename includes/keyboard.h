@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:19:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 23:29:57 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 20:30:24 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #  define D_KC 2
 #  define Z_KC 6
 #  define X_KC 7
+#  define C_KC 8
 #  define MINUS_KC 27
 #  define EQUAL_KC 24
 
@@ -55,6 +56,9 @@
 #  define D_KC 100
 #  define Z_KC -1
 #  define X_KC -1
+#  define C_KC -1
+#  define MINUS_KC -1
+#  define EQUAL_KC -1
 
 #  define SHIFT_KC 65505
 

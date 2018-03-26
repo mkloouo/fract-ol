@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_mouse.c                                     :+:      :+:    :+:   */
+/*   blue_color_mode.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:56:11 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 19:52:36 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/26 20:16:50 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/26 21:14:41 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mouse.h>
-#include <ftstdlib.h>
+#include <fractal.h>
 
-void					delete_mouse(t_mouse **mp)
+int						blue_color_mode(t_fractal *f, int i)
 {
-	if (mp && *mp)
-	{
-		del_vec2i(&(*mp)->press);
-		del_vec2i(&(*mp)->release);
-		del_vec2i(&(*mp)->previous);
-		del_vec2i(&(*mp)->current);
-		ft_memdel((void**)mp);
-	}
+	float				normalized;
+	int					mapped;
+
+	normalized = i / (float)f->iter;
+	mapped = (int)(255 * normalized / 1);
+	return (RGB_COLOR(0, 0, 0, mapped % 255));
 }

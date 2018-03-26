@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   key_press_hook.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:55:19 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:30:23 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 20:55:03 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+static void				handle_movement(int btn, t_fractal *f)
+{
+	if (MOVE_HOR(btn))
+		f->mx += MOVE_RIGHT(btn) ? 5 : -5;
+	else if (MOVE_VER(btn))
+		f->my += MOVE_DOWN(btn) ? 5 : -5;
+}
 
 int						key_press_hook(int btn, t_fractal *f)
 {
@@ -22,18 +30,17 @@ int						key_press_hook(int btn, t_fractal *f)
 		exit(0);
 	}
 	else if (MOVE_BUTTON(btn))
+		handle_movement(btn, f);
+	else if (btn == C_KC)
 	{
-		if (MOVE_HOR(btn))
-			f->mx += MOVE_RIGHT(btn) ? 5 : -5;
-		else if (MOVE_VER(btn))
-			f->my += MOVE_DOWN(btn) ? 5 : -5;
+		f->color_mode++;
+		f->color_mode %= COLOR_MODES;
 	}
-	else if (btn == NUM_ONE_KC)
-		f->type = MANDELBROT_TYPE;
-	else if (btn == NUM_TWO_KC)
-		f->type = JULIA_TYPE;
 	else
+	{
+		printf("unknown key: %d\n", btn);
 		return (-1);
-	update_fractal_window(f);
+	}
+	update_fractal(f);
 	return (0);
 }

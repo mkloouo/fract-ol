@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 19:49:53 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/13 19:57:00 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 19:39:05 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@
 
 typedef struct			s_mouse
 {
-	t_vec2i				*pv;
-	t_vec2i				*rv;
-	t_vec2i				*cv;
+	t_vec2i				*press;
+	t_vec2i				*release;
+	t_vec2i				*previous;
+	t_vec2i				*current;
 	int					btn;
 	int					pressed;
 }						t_mouse;

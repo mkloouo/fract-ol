@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_mouse.c                                     :+:      :+:    :+:   */
+/*   mouse_release_hook.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 19:56:11 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 19:52:36 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/25 19:28:12 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/26 19:48:57 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mouse.h>
-#include <ftstdlib.h>
+#include <fractal.h>
 
-void					delete_mouse(t_mouse **mp)
+int						mouse_release_hook(int btn, int x, int y, t_fractal *f)
 {
-	if (mp && *mp)
+	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
 	{
-		del_vec2i(&(*mp)->press);
-		del_vec2i(&(*mp)->release);
-		del_vec2i(&(*mp)->previous);
-		del_vec2i(&(*mp)->current);
-		ft_memdel((void**)mp);
+		set_vec2i(f->window->mouse->release, x, y);
+		f->window->mouse->btn = btn;
+		f->window->mouse->pressed = 0;
 	}
+	return (0);
 }

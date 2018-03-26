@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_fractal_window.c                            :+:      :+:    :+:   */
+/*   update_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 17:32:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 19:23:03 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/26 19:27:39 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/26 20:54:44 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void				*update_fractal_image(void *arg)
+static void				*update_image_part(void *arg)
 {
 	int					i;
 	int					j;
@@ -35,7 +35,7 @@ static void				*update_fractal_image(void *arg)
 			ft->fractal->fractals[ft->fractal->fractal_type](ft->fractal,
 				i, j));
 			pixel.z = ft->fractal->color_modes
-				[ft->fractal->color_mode](pixel.z, ft->fractal->iter);
+				[ft->fractal->color_mode](ft->fractal, pixel.z);
 			put_pixel(ft->fractal->window->image, &pixel);
 			j++;
 		}
@@ -60,7 +60,7 @@ int height)
 	return (ft);
 }
 
-void					update_fractal_window(t_fractal *f)
+void					update_fractal(t_fractal *f)
 {
 	int					i;
 	int					j;
@@ -75,7 +75,7 @@ void					update_fractal_window(t_fractal *f)
 									j, f->window->width, f->window->height);
 			ft[i * FRACTAL_THREADS_X + j].fractal = f;
 			pthread_create(&(ft[i * FRACTAL_THREADS_X + j].thread), NULL,
-					&update_fractal_image, &ft[i * FRACTAL_THREADS_X + j]);
+					&update_image_part, &ft[i * FRACTAL_THREADS_X + j]);
 			j++;
 		}
 		i++;

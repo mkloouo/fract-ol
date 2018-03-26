@@ -6,11 +6,10 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 19:19:52 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 21:12:51 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ftrange.h>
 #include <fractal.h>
 #include <stdio.h>
 
@@ -34,14 +33,12 @@ int						julia(t_fractal *f, int i, int j)
 	float				ib;
 
 	n = 0;
-	ia = ft_mapf(f->window->mouse->cv->x, get_rangef(0, f->window->width),
-				get_rangef(-1, 1));
-	ib = ft_mapf(f->window->mouse->cv->y, get_rangef(0, f->window->height),
-				get_rangef(-1, 1));
-	a = ft_mapf(i, get_rangef(0, f->window->height),
-				get_rangef(-1 * f->zoom, f->zoom));
-	b = ft_mapf(j, get_rangef(0, f->window->width),
-				get_rangef(-1 * f->zoom, f->zoom));
+	ia = ((2) * (float)(f->window->mouse->current->x)) /
+		(f->window->width) - 1;
+	ib = ((2) * (float)(f->window->mouse->current->y)) /
+		(f->window->height) - 1;
+	a = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
+	b = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
 	while (n < f->iter)
 	{
 		if (a * a + b * b > f->bail)
