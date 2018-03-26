@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_fractal_window.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:32:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:05:00 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 18:40:11 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				*update_fractal_image(void *arg)
 		{
 			pixel = get_vec3i(i, j,
 			ft->fractal->fractals[ft->fractal->type](ft->fractal, i, j));
-			pixel.z = ft->fractal->color_modes[0](pixel.z);
+			pixel.z = ft->fractal->color_modes[0](pixel.z, ft->fractal->iter);
 			put_pixel(ft->fractal->window->image, &pixel);
 			j++;
 		}

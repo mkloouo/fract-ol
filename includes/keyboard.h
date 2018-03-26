@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:19:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:29:29 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/25 23:29:57 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@
 
 #  define NUM_PLUS_KC 65451
 #  define NUM_MINUS_KC 65453
+#  define NUM_ONE_KC -1
+#  define NUM_TWO_KC -1
+#  define NUM_THREE_KC -1
 
 # endif
 

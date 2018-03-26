@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+         #
+#    By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/20 14:34:22 by modnosum          #+#    #+#              #
-#    Updated: 2018/03/16 03:30:54 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/26 18:41:48 by modnosum         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 # Compiler Configuration
 CC						= gcc
@@ -39,7 +39,11 @@ include $(MLX_PATH)/Mlx.mk
 
 # Add dirs and libs
 IFLAGS					+= -I $(INC_DIR)
+ifneq (Darwin,$(UNAME))
+LFLAGS					+= -lm -pthread
+else
 LFLAGS					+= -lm
+endif
 
 # Phony rules
 .PHONY: all clean fclean re c f

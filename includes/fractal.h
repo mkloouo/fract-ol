@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: modnosum <modnosum@gmail.com>              +#+  +:+       +#+        */
+/*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/25 21:27:43 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/26 18:42:24 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct			s_fractal
 	int					bail;
 	int					(*fractals[FRACTALS])(struct s_fractal *f,
 												int i, int j);
-	int					(*color_modes[COLOR_MODES])(int iterations);
+	int					(*color_modes[COLOR_MODES])(int iterations, int max_iter);
 }						t_fractal;
 
 typedef struct			s_fractal_thread
@@ -62,8 +62,9 @@ void					delete_fractal(t_fractal **fp);
 void					update_fractal_window(t_fractal *f);
 
 int						mandelbrot(t_fractal *f, int i, int j);
+int						julia(t_fractal *f, int i, int j);
 
-int						blend_color_mode(int iterations);
+int						blend_color_mode(int iterations, int max_iter);
 
 int						mouse_move_hook(int x, int y, t_fractal *f);
 int						mouse_press_hook(int btn, int x, int y, t_fractal *f);
