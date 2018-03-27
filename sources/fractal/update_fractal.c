@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:27:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 20:54:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:06:20 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void				*update_image_part(void *arg)
 		j = ft->from_x;
 		while (j < ft->to_x)
 		{
-			pixel = get_vec3i(i, j,
+			pixel = get_vec3i(j, i,
 			ft->fractal->fractals[ft->fractal->fractal_type](ft->fractal,
 				i, j));
 			pixel.z = ft->fractal->color_modes

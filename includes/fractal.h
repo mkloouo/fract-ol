@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 21:06:36 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 03:41:30 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@
 # include <window.h>
 # include <pthread.h>
 
-# define FRACTALS 2
-# define COLOR_MODES 5
+# define FRACTALS 4
+# define COLOR_MODES 6
 
 # define MANDELBROT_TYPE 0
 # define MANDELBROT_NAME "Mandelbrot"
 
 # define JULIA_TYPE 1
 # define JULIA_NAME "Julia"
+
+# define NEWTON_BASIC_TYPE 2
+# define NEWTON_BASIC_NAME "Newton Basic"
+
+# define BURNING_SHIP_TYPE 3
+# define BURNING_SHIP_NAME "Burning Ship"
 
 # define DEFAULT_ZOOM 2
 # define DEFAULT_MX 0
@@ -66,12 +72,15 @@ void					update_fractal(t_fractal *f);
 
 int						mandelbrot(t_fractal *f, int i, int j);
 int						julia(t_fractal *f, int i, int j);
+int						newton_basic(t_fractal *f, int i, int j);
+int						burning_ship(t_fractal *f, int i, int j);
 
 int						bw_color_mode(t_fractal *f, int i);
 int						red_color_mode(t_fractal *f, int i);
 int						green_color_mode(t_fractal *f, int i);
 int						blue_color_mode(t_fractal *f, int i);
-int						random_color_mode(t_fractal *f, int i);
+int						noise_color_mode(t_fractal *f, int i);
+int						twenty_seven_color_mode(t_fractal *f, int i);
 
 int						mouse_move_hook(int x, int y, t_fractal *f);
 int						mouse_press_hook(int btn, int x, int y, t_fractal *f);

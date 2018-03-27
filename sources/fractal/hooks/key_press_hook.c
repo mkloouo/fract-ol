@@ -6,13 +6,12 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:55:19 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 20:55:03 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:09:44 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 static void				handle_movement(int btn, t_fractal *f)
 {
@@ -37,10 +36,7 @@ int						key_press_hook(int btn, t_fractal *f)
 		f->color_mode %= COLOR_MODES;
 	}
 	else
-	{
-		printf("unknown key: %d\n", btn);
 		return (-1);
-	}
 	update_fractal(f);
 	return (0);
 }

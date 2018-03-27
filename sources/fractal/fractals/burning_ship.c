@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:09:00 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/26 23:22:29 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/27 04:09:21 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ftrange.h>
 #include <fractal.h>
+#include <math.h>
 
 static void				complex_pow_2(float *a, float *b)
 {
@@ -18,12 +20,12 @@ static void				complex_pow_2(float *a, float *b)
 	float				tb;
 
 	ta = *a * *a - *b * *b;
-	tb = 2 * *a * *b;
+	tb = 2 * fabs(*a * *b);
 	*a = ta;
 	*b = tb;
 }
 
-int						julia(t_fractal *f, int i, int j)
+int						burning_ship(t_fractal *f, int i, int j)
 {
 	int					n;
 	float				a;
@@ -32,12 +34,10 @@ int						julia(t_fractal *f, int i, int j)
 	float				ib;
 
 	n = 0;
-	ia = ((2) * (float)(f->window->mouse->current->x)) /
-		(f->window->width) - 1;
-	ib = ((2) * (float)(f->window->mouse->current->y)) /
-		(f->window->height) - 1;
-	a = ((2 * (float)f->zoom) * (j - f->mx)) / (f->window->width) - f->zoom;
-	b = ((2 * (float)f->zoom) * (i - f->my)) / (f->window->height) - f->zoom;
+	ia = ((2 * (float)f->zoom * (j - f->mx)) / (f->window->width)) - f->zoom;
+	ib = ((2 * (float)f->zoom * (i - f->my)) / (f->window->height)) - f->zoom;
+	a = ia;
+	b = ib;
 	while (n < f->iter)
 	{
 		if (a * a + b * b > f->bail)

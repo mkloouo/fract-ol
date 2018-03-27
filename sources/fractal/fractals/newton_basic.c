@@ -1,50 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   newton_basic.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:09:00 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/26 22:27:47 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/27 04:12:11 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 
-static void				complex_pow_2(float *a, float *b)
+static void				complex_pow_2(float a, float b, float *c, float *d)
 {
 	float				ta;
 	float				tb;
 
-	ta = *a * *a - *b * *b;
-	tb = 2 * *a * *b;
-	*a = ta;
-	*b = tb;
+	ta = a * a - b * b;
+	tb = 2 * a * b;
+	*c = ta;
+	*d = tb;
 }
 
-int						julia(t_fractal *f, int i, int j)
+static void				complex_pow_3(float a, float b, float *c, float *d)
+{
+	float				ta;
+	float				tb;
+
+	ta = a * a * a - 3 * a * b * b;
+	tb = 3 * a * a * b - b * b * b;
+	*c = ta;
+	*d = tb;
+}
+
+int						newton_basic(t_fractal *f, int i, int j)
 {
 	int					n;
 	float				a;
 	float				b;
-	float				ia;
-	float				ib;
 
 	n = 0;
-	ia = ((2) * (float)(f->window->mouse->current->x)) /
-		(f->window->width) - 1;
-	ib = ((2) * (float)(f->window->mouse->current->y)) /
-		(f->window->height) - 1;
-	a = ((2 * (float)f->zoom) * (j - f->mx)) / (f->window->width) - f->zoom;
-	b = ((2 * (float)f->zoom) * (i - f->my)) / (f->window->height) - f->zoom;
+	a = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
+	b = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
 	while (n < f->iter)
 	{
 		if (a * a + b * b > f->bail)
 			break ;
-		complex_pow_2(&a, &b);
-		a += ia;
-		b += ib;
+		a = a - (1 * (a - 1) / a);
+		b = b - (1 * (b - 1) / b);
 		n++;
 	}
 	return (n);

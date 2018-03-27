@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 20:52:39 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:12:19 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void					init_fractal_functions(t_fractal *f)
 {
 	f->fractals[0] = &mandelbrot;
 	f->fractals[1] = &julia;
+	f->fractals[2] = &newton_basic;
+	f->fractals[3] = &burning_ship;
 }
 
 static void					init_color_functions(t_fractal *f)
@@ -26,7 +28,8 @@ static void					init_color_functions(t_fractal *f)
 	f->color_modes[1] = &red_color_mode;
 	f->color_modes[2] = &green_color_mode;
 	f->color_modes[3] = &blue_color_mode;
-	f->color_modes[4] = &random_color_mode;
+	f->color_modes[4] = &noise_color_mode;
+	f->color_modes[5] = &twenty_seven_color_mode;
 }
 
 static void					init_hooks(t_fractal *f)

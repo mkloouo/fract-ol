@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:12:20 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/26 21:11:48 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:06:02 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <keyboard.h>
 # include <image.h>
 
-# define WIN_DEF_WIDTH 950
-# define WIN_DEF_HEIGHT 950
+# define WIN_DEF_WIDTH 1000
+# define WIN_DEF_HEIGHT 1000
 
 # define KEY_RELEASE 3
 # define KEY_RELEASE_MASK (1L << 1)
