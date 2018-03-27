@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   twenty_seven_color_mode.c                          :+:      :+:    :+:   */
+/*   get_vec2f.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/27 03:41:55 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 05:24:57 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/27 06:17:44 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/27 06:18:05 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractal.h>
-#include <math.h>
+#include <vector.h>
 
-int						twenty_seven_color_mode(t_fractal *f, int i)
+t_vec2f					get_vec2f(float x, float y)
 {
-	float				normalized;
-	int					mapped;
+	t_vec2f				p;
 
-	normalized = sqrt(i / (float)f->iter);
-	mapped = (int)(255 * normalized / 1) % 27;
-	return (RGB_COLOR(0, (mapped / 1) % 3 * 255,
-			(mapped / 2) % 3 * 255,
-			(mapped / 4) % 3 * 255));
+	p.x = x;
+	p.y = y;
+	return (p);
 }

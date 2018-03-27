@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:44:53 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 07:54:28 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
 # define BURNING_SHIP_NAME "Burning Ship"
 
 # define DEFAULT_ZOOM 2
-# define DEFAULT_MX 0
-# define DEFAULT_MY 0
 # define DEFAULT_ITERATIONS 100
 # define DEFAULT_BAIL 4
 # define DEFAULT_MIN 1e-6
 # define DEFAULT_MAX 1e+6
+# define DEFAULT_MX 0
+# define DEFAULT_MY 0
 
 # define FRACTAL_THREADS_X 4
 # define FRACTAL_THREADS_Y 2
@@ -45,11 +45,13 @@
 typedef struct			s_fractal
 {
 	t_window			*window;
+	t_window			*info;
 	int					fractal_type;
 	int					color_mode;
-	float				zoom;
 	float				mx;
 	float				my;
+	t_vec2f				*scale_x;
+	t_vec2f				*scale_y;
 	int					iter;
 	int					bail;
 	float				min;
@@ -70,9 +72,11 @@ typedef struct			s_fractal_thread
 }						t_fractal_thread;
 
 int						init_fractal(t_fractal **f, int ac, char **av);
+void					init_default_values(t_fractal *f);
 void					delete_fractal(t_fractal **fp);
 
 void					update_fractal(t_fractal *f);
+void					zoom_fractal(int in, t_fractal *f);
 
 int						mandelbrot(t_fractal *f, int i, int j);
 int						julia(t_fractal *f, int i, int j);
@@ -91,7 +95,10 @@ int						mouse_press_hook(int btn, int x, int y, t_fractal *f);
 int						mouse_release_hook(int btn, int x, int y, t_fractal *f);
 int						key_press_hook(int btn, t_fractal *f);
 
+int						info_key_press(int btn, t_fractal *f);
+
 void					print_usage(char *name);
 int						get_fractal(char *name);
+char					*get_fractal_by_number(int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 04:44:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:44:42 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 08:19:17 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ int						newton(t_fractal *f, int i, int j)
 	float				d;
 
 	n = 0;
-	a = ((2 * (float)f->zoom) * (j - f->mx)) / (f->window->width) - f->zoom;
-	b = ((2 * (float)f->zoom) * (i - f->my)) / (f->window->height) - f->zoom;
+	a = b = n = i * j;
+	// TODO: Finish newton
+	// a = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
+	// b = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
 	c = a;
 	d = b;
 	while (n < f->iter)

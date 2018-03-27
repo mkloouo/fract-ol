@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:37:47 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 08:18:58 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ int						julia(t_fractal *f, int i, int j)
 	float				ib;
 
 	n = 0;
-	ia = ((2) * (float)(f->window->mouse->current->x)) /
-		(f->window->width) - 1;
-	ib = ((2) * (float)(f->window->mouse->current->y)) /
-		(f->window->height) - 1;
-	a = ((2 * (float)f->zoom) * (j - f->mx)) / (f->window->width) - f->zoom;
-	b = ((2 * (float)f->zoom) * (i - f->my)) / (f->window->height) - f->zoom;
+	ia = a = i;
+	ib = b = j;
+		// TODO: Finish julia
+	// ia = ((2) * (float)(f->window->mouse->current->x)) /
+	// 	(f->window->width) - 1;
+	// ib = ((2) * (float)(f->window->mouse->current->y)) /
+	// 	(f->window->height) - 1;
+	// a = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
+	// b = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
 	while (n < f->iter)
 	{
 		if (a * a + b * b > f->bail)

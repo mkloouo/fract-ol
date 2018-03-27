@@ -6,11 +6,12 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:32:55 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 07:40:58 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
+#include <stdio.h>
 
 int						mouse_move_hook(int x, int y, t_fractal *f)
 {

@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:37:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 08:19:09 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ int						mandelbrot(t_fractal *f, int i, int j)
 	float				ia;
 	float				ib;
 
+	/*
+	newV = ((newMax - newMin) * (oldV - oldMin) / (oldMax - oldMin)) + newMin
+	*/
+
+// TODO: Finish mandelbrot
 	n = 0;
-	ia = ((2 * (float)f->zoom * (j - f->mx)) / (f->window->width)) - f->zoom;
-	ib = ((2 * (float)f->zoom * (i - f->my)) / (f->window->height)) - f->zoom;
+	ia = ((f->scale_x->y - f->scale_x->x) * (j - f->mx) / (f->window->width +
+		f->mx)) + f->scale_x->x;
+	ib = ((f->scale_y->y - f->scale_y->x) * (i - f->my) / (f->window->height +
+		f->my)) + f->scale_y->x;
 	a = ia;
 	b = ib;
 	while (n < f->iter)

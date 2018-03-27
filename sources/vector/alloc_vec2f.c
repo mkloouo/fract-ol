@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   twenty_seven_color_mode.c                          :+:      :+:    :+:   */
+/*   alloc_vec2f.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/27 03:41:55 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 05:24:57 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/27 06:16:22 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/27 06:16:45 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractal.h>
-#include <math.h>
+#include <vector.h>
+#include <ftstdlib.h>
 
-int						twenty_seven_color_mode(t_fractal *f, int i)
+t_vec2f					*alloc_vec2f(float x, float y)
 {
-	float				normalized;
-	int					mapped;
+	t_vec2f			*v;
 
-	normalized = sqrt(i / (float)f->iter);
-	mapped = (int)(255 * normalized / 1) % 27;
-	return (RGB_COLOR(0, (mapped / 1) % 3 * 255,
-			(mapped / 2) % 3 * 255,
-			(mapped / 4) % 3 * 255));
+	if ((v = (t_vec2f*)ft_memalloc(sizeof(t_vec2f))))
+	{
+		v->x = x;
+		v->y = y;
+	}
+	return (v);
 }

@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:55:19 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:09:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 06:43:23 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int						key_press_hook(int btn, t_fractal *f)
 	}
 	else if (MOVE_BUTTON(btn))
 		handle_movement(btn, f);
+	else if (RESET_BUTTON(btn))
+		init_default_values(f);
 	else if (btn == C_KC)
 	{
 		f->color_mode++;
