@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 23:22:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 06:25:15 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 08:19:44 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int						burning_ship(t_fractal *f, int i, int j)
 	n = 0;
 	ia = i;
 	ib = j;
+	// TODO: Finish burning ship
 //	ia = ((2 * (float)f->zoom * j) / (f->window->width)) - f->zoom;
 //	ib = ((2 * (float)f->zoom * i) / (f->window->height)) - f->zoom;
 	a = ia;
