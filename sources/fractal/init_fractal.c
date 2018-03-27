@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:12:19 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:58:23 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void					init_fractal_functions(t_fractal *f)
 {
 	f->fractals[0] = &mandelbrot;
 	f->fractals[1] = &julia;
-	f->fractals[2] = &newton_basic;
+	f->fractals[2] = &newton;
 	f->fractals[3] = &burning_ship;
 }
 
@@ -47,6 +47,8 @@ static void					init_default(t_fractal *f)
 	f->my = DEFAULT_MY;
 	f->iter = DEFAULT_ITERATIONS;
 	f->bail = DEFAULT_BAIL;
+	f->min = DEFAULT_MIN;
+	f->max = DEFAULT_MAX;
 }
 
 int							init_fractal(t_fractal **f, int ac, char **av)

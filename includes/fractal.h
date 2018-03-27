@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 03:41:30 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:44:53 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define JULIA_TYPE 1
 # define JULIA_NAME "Julia"
 
-# define NEWTON_BASIC_TYPE 2
-# define NEWTON_BASIC_NAME "Newton Basic"
+# define NEWTON_TYPE 2
+# define NEWTON_NAME "Newton"
 
 # define BURNING_SHIP_TYPE 3
 # define BURNING_SHIP_NAME "Burning Ship"
@@ -36,6 +36,8 @@
 # define DEFAULT_MY 0
 # define DEFAULT_ITERATIONS 100
 # define DEFAULT_BAIL 4
+# define DEFAULT_MIN 1e-6
+# define DEFAULT_MAX 1e+6
 
 # define FRACTAL_THREADS_X 4
 # define FRACTAL_THREADS_Y 2
@@ -50,6 +52,8 @@ typedef struct			s_fractal
 	float				my;
 	int					iter;
 	int					bail;
+	float				min;
+	float				max;
 	int					(*fractals[FRACTALS])(struct s_fractal *f,
 												int i, int j);
 	int					(*color_modes[COLOR_MODES])(struct s_fractal *f, int i);
@@ -72,7 +76,7 @@ void					update_fractal(t_fractal *f);
 
 int						mandelbrot(t_fractal *f, int i, int j);
 int						julia(t_fractal *f, int i, int j);
-int						newton_basic(t_fractal *f, int i, int j);
+int						newton(t_fractal *f, int i, int j);
 int						burning_ship(t_fractal *f, int i, int j);
 
 int						bw_color_mode(t_fractal *f, int i);

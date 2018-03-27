@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:10:01 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/27 04:32:55 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int						mouse_move_hook(int x, int y, t_fractal *f)
 					f->window->mouse->press->y;
 				set_vec2i(f->window->mouse->press, f->window->mouse->current->x,
 						f->window->mouse->current->y);
+				update_fractal(f);
 			}
 			else if (f->fractal_type == JULIA_TYPE)
-				;
-			else
-				return (-1);
-			update_fractal(f);
+				update_fractal(f);
 		}
 	}
+	else
+		f->window->mouse->pressed = 0;
 	return (1);
 }
