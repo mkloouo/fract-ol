@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 14:29:25 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 07:40:58 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:04:56 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,15 @@
 
 int						mouse_move_hook(int x, int y, t_fractal *f)
 {
-	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
+	if (IN_IMAGE(x, y, f->w->image->width, f->w->image->height))
 	{
-		set_vec2i(f->window->mouse->current, x, y);
-		if (f->window->mouse->current->x != f->window->mouse->previous->x &&
-			f->window->mouse->current->x != f->window->mouse->previous->x)
-		{
-			if (f->window->mouse->pressed && LEFT_BUTTON(f->window->mouse->btn))
-			{
-				f->mx += f->window->mouse->current->x -
-					f->window->mouse->press->x;
-				f->my += f->window->mouse->current->y -
-					f->window->mouse->press->y;
-				set_vec2i(f->window->mouse->press, f->window->mouse->current->x,
-						f->window->mouse->current->y);
+		set_vec2i(f->w->mouse->current, x, y);
+		if (f->w->mouse->current->x != f->w->mouse->previous->x &&
+			f->w->mouse->current->x != f->w->mouse->previous->x)
+			if (f->type == JULIA_TYPE)
 				update_fractal(f);
-			}
-			else if (f->fractal_type == JULIA_TYPE)
-				update_fractal(f);
-		}
 	}
 	else
-		f->window->mouse->pressed = 0;
+		f->w->mouse->pressed = 0;
 	return (1);
 }

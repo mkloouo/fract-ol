@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 23:22:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 08:19:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:05:19 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,33 @@
 #include <fractal.h>
 #include <math.h>
 
-static void				complex_pow_2(float *a, float *b)
+static void				complex_pow_2(long double *a, long double *b)
 {
-	float				ta;
-	float				tb;
+	long double			ta;
+	long double			tb;
 
 	ta = *a * *a - *b * *b;
-	tb = 2 * fabs(*a * *b);
+	tb = 2 * fabs((double)*a * (double)*b);
 	*a = ta;
 	*b = tb;
 }
 
-int						burning_ship(t_fractal *f, int i, int j)
+int						burning_ship(t_fractal *f, long double i, long double j)
 {
 	int					n;
-	float				a;
-	float				b;
-	float				ia;
-	float				ib;
+	long double			a;
+	long double			b;
 
 	n = 0;
-	ia = i;
-	ib = j;
-	// TODO: Finish burning ship
-//	ia = ((2 * (float)f->zoom * j) / (f->window->width)) - f->zoom;
-//	ib = ((2 * (float)f->zoom * i) / (f->window->height)) - f->zoom;
-	a = ia;
-	b = ib;
-	while (n < f->iter)
+	a = j;
+	b = i;
+	while (n < f->max_iter)
 	{
 		if (a * a + b * b > f->bail)
 			break ;
 		complex_pow_2(&a, &b);
-		a += ia;
-		b += ib;
+		a += j;
+		b += i;
 		n++;
 	}
 	return (n);

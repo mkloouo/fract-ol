@@ -6,16 +6,16 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 08:18:58 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:05:16 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 
-static void				complex_pow_2(float *a, float *b)
+static void				complex_pow_2(long double *a, long double *b)
 {
-	float				ta;
-	float				tb;
+	long double			ta;
+	long double			tb;
 
 	ta = *a * *a - *b * *b;
 	tb = 2 * *a * *b;
@@ -23,31 +23,24 @@ static void				complex_pow_2(float *a, float *b)
 	*b = tb;
 }
 
-int						julia(t_fractal *f, int i, int j)
+int						julia(t_fractal *f, long double i, long double j)
 {
 	int					n;
-	float				a;
-	float				b;
-	float				ia;
-	float				ib;
+	long double			a;
+	long double			b;
 
 	n = 0;
-	ia = a = i;
-	ib = b = j;
-		// TODO: Finish julia
-	// ia = ((2) * (float)(f->window->mouse->current->x)) /
-	// 	(f->window->width) - 1;
-	// ib = ((2) * (float)(f->window->mouse->current->y)) /
-	// 	(f->window->height) - 1;
-	// a = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
-	// b = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
-	while (n < f->iter)
+	a = ((2) * (float)(f->w->mouse->current->x)) /
+	 	(f->w->width) - 1;
+	b = ((2) * (float)(f->w->mouse->current->y)) /
+	 	(f->w->height) - 1;
+	while (n < f->max_iter)
 	{
-		if (a * a + b * b > f->bail)
+		if (i * i + j * j > f->bail)
 			break ;
-		complex_pow_2(&a, &b);
-		a += ia;
-		b += ib;
+		complex_pow_2(&i, &j);
+		i += a;
+		j += b;
 		n++;
 	}
 	return (n);

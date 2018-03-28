@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 07:54:28 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:08:00 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define FRACTALS 4
 # define COLOR_MODES 6
+# define FRACTAL_THREADS 8
+# define INFO_WIN_SIZE 350
 
 # define MANDELBROT_TYPE 0
 # define MANDELBROT_NAME "Mandelbrot"
@@ -32,42 +34,37 @@
 # define BURNING_SHIP_NAME "Burning Ship"
 
 # define DEFAULT_ZOOM 2
-# define DEFAULT_ITERATIONS 100
+# define DEFAULT_MAX_ITER 50
 # define DEFAULT_BAIL 4
 # define DEFAULT_MIN 1e-6
 # define DEFAULT_MAX 1e+6
-# define DEFAULT_MX 0
-# define DEFAULT_MY 0
-
-# define FRACTAL_THREADS_X 4
-# define FRACTAL_THREADS_Y 2
 
 typedef struct			s_fractal
 {
-	t_window			*window;
-	t_window			*info;
-	int					fractal_type;
-	int					color_mode;
-	float				mx;
-	float				my;
-	t_vec2f				*scale_x;
-	t_vec2f				*scale_y;
-	int					iter;
+	t_window			*w;
+	t_window			*i;
+	int					type;
+	int					mode;
+	int					max_iter;
 	int					bail;
-	float				min;
-	float				max;
-	int					(*fractals[FRACTALS])(struct s_fractal *f,
-												int i, int j);
-	int					(*color_modes[COLOR_MODES])(struct s_fractal *f, int i);
+	long double			min;
+	long double			max;
+	int					(*f[FRACTALS])(struct s_fractal *f,
+									long double i, long double j);
+	int					(*c[COLOR_MODES])(struct s_fractal *f, int iter);
+	long double			sx;
+	long double			sy;
+	long double			sf;
+	long double			st;
 }						t_fractal;
 
 typedef struct			s_fractal_thread
 {
-	int					from_y;
-	int					to_y;
-	int					from_x;
-	int					to_x;
-	t_fractal			*fractal;
+	int					fy;
+	int					ty;
+	int					fx;
+	int					tx;
+	t_fractal			*f;
 	pthread_t			thread;
 }						t_fractal_thread;
 
@@ -76,19 +73,21 @@ void					init_default_values(t_fractal *f);
 void					delete_fractal(t_fractal **fp);
 
 void					update_fractal(t_fractal *f);
+void					update_info(t_fractal *f);
 void					zoom_fractal(int in, t_fractal *f);
 
-int						mandelbrot(t_fractal *f, int i, int j);
-int						julia(t_fractal *f, int i, int j);
-int						newton(t_fractal *f, int i, int j);
-int						burning_ship(t_fractal *f, int i, int j);
+int						mandelbrot(t_fractal *f, long double i, long double j);
+int						julia(t_fractal *f, long double i, long double j);
+int						newton(t_fractal *f, long double i, long double j);
+int						burning_ship(t_fractal *f, long double i,
+						long double j);
 
-int						bw_color_mode(t_fractal *f, int i);
-int						red_color_mode(t_fractal *f, int i);
-int						green_color_mode(t_fractal *f, int i);
-int						blue_color_mode(t_fractal *f, int i);
-int						noise_color_mode(t_fractal *f, int i);
-int						twenty_seven_color_mode(t_fractal *f, int i);
+int						bw_color_mode(t_fractal *f, int iter);
+int						red_color_mode(t_fractal *f, int iter);
+int						green_color_mode(t_fractal *f, int iter);
+int						blue_color_mode(t_fractal *f, int iter);
+int						noise_color_mode(t_fractal *f, int iter);
+int						twenty_seven_color_mode(t_fractal *f, int iter);
 
 int						mouse_move_hook(int x, int y, t_fractal *f);
 int						mouse_press_hook(int btn, int x, int y, t_fractal *f);

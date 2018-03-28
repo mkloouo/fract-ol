@@ -6,19 +6,21 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 04:44:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 08:19:17 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 20:05:12 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 #include <math.h>
 
-static void				nuzhno_bolshe_peremennyh(float *a, float *b,
-													float *c, float *d)
+static void				nuzhno_bolshe_peremennyh(long double *a,
+						long double *b,
+						long double *c,
+						long double *d)
 {
-	float t1;
-	float t2;
-	float p;
+	double				t1;
+	double				t2;
+	double				p;
 
 	t1 = *a;
 	t2 = *b;
@@ -26,30 +28,24 @@ static void				nuzhno_bolshe_peremennyh(float *a, float *b,
 	p = p * p;
 	*a = (float)2 / 3 * t1 + (t1 * t1 - t2 * t2) / (float)(3 * p);
 	*b = (float)2 / 3 * t2 * (1 - t1 / p);
-	*c = fabs(t1 - *a);
-	*d = fabs(t2 - *b);
+	*c = fabs(t1 - (double)*a);
+	*d = fabs(t2 - (double)*b);
 }
 
-int						newton(t_fractal *f, int i, int j)
+int						newton(t_fractal *f, long double i, long double j)
 {
 	int					n;
-	float				a;
-	float				b;
-	float				c;
-	float				d;
+	long double			c;
+	long double			d;
 
 	n = 0;
-	a = b = n = i * j;
-	// TODO: Finish newton
-	// a = ((2 * (float)f->zoom) * j) / (f->window->width) - f->zoom;
-	// b = ((2 * (float)f->zoom) * i) / (f->window->height) - f->zoom;
-	c = a;
-	d = b;
-	while (n < f->iter)
+	c = j;
+	d = i;
+	while (n < f->max_iter)
 	{
-		if (a * a + b * b >= f->max || c * c + d * d <= f->min)
+		if (i * i + j * j >= f->max || c * c + d * d <= f->min)
 			break ;
-		nuzhno_bolshe_peremennyh(&a, &b, &c, &d);
+		nuzhno_bolshe_peremennyh(&i, &j, &c, &d);
 		n++;
 	}
 	return (n);

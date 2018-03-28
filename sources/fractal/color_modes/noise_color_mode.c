@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 00:04:56 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/27 04:58:56 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/28 19:50:16 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int						noise_color_mode(t_fractal *f, int i)
 		srand(time(NULL));
 		generated = 1;
 	}
-	normalized = sqrt(i / (float)f->iter);
+	normalized = sqrt(i / (float)f->max_iter);
 	mapped = rand() * (int)(255 * normalized / 1) % 255;
-	if (i == f->iter)
+	if (i == f->max_iter)
 		return (RGB_COLOR(0, 0, 0, mapped));
-	else if (i < f->iter / 3)
+	else if (i < f->max_iter / 3)
 		return (RGB_COLOR(0, 0, mapped, 0));
-	else if (i < f->iter / 2)
+	else if (i < f->max_iter / 2)
 		return (RGB_COLOR(0, mapped, mapped, 0));
 	else
 		return (RGB_COLOR(0, 0, 0, mapped));
