@@ -6,12 +6,13 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/28 16:59:37 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 00:33:12 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ftstdlib.h>
 #include <fractal.h>
+#include <ftio.h>
 
 static void				init_fractal_functions(t_fractal *f)
 {
@@ -57,7 +58,7 @@ int						init_fractal(t_fractal **f, int ac, char **av)
 		(*f)->i = get_window("Information", INFO_WIN_SIZE,
 											INFO_WIN_SIZE);
 		(*f)->w = get_window(av[0], WIN_DEF_WIDTH,
-									WIN_DEF_HEIGHT);		
+									WIN_DEF_HEIGHT);
 		init_default_values(*f);
 		init_hooks(*f);
 		init_info(*f);

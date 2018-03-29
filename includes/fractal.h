@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/28 20:08:00 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 01:19:18 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define FRACTALS 4
 # define COLOR_MODES 6
-# define FRACTAL_THREADS 8
+# define FRACTAL_THREADS 4
 # define INFO_WIN_SIZE 350
 
 # define MANDELBROT_TYPE 0

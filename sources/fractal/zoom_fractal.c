@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 05:02:24 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/28 20:04:44 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 00:25:22 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void					zoom_fractal(int in, t_fractal *f)
 	(void)f;
 	interpolation = 1.0 / (in ? (1.05) : (1.0 / 1.05));
 	interpolation = interpolate(0, 0, 1);
+	(void)interpolation;
 	// mouse_x = (float)(f->scale_x->y - f->scale_x->x) *
 	// 	(f->window->mouse->current->x) / (float)f->window->width +
 	// 	f->scale_x->x;
