@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 12:48:28 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:03:51 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,60 @@
 # define BURNING_SHIP_NAME "Burning Ship"
 
 # define DEFAULT_ZOOM 2
-# define DEFAULT_MAX_ITER 50
-# define DEFAULT_BAIL 4
+# define DEFAULT_MAX_ITER 20
+# define DEFAULT_BAIL 16
 # define DEFAULT_MIN 1e-6
 # define DEFAULT_MAX 1e+6
+# define DEFAULT_SCALE 2
+
+# define QUIT_BUTTON(B) (B == ESC_KC)
+# define RESET_BUTTON(B) (B == R_KC)
+# define COLOR_BUTTON(B) (B == C_KC)
+# define FRACTAL_BUTTON(B) (B == F_KC)
+# define ITERATION_UP(B) (B == NUM_PLUS_KC)
+# define ITERATION_DOWN(B) (B == NUM_MINUS_KC)
+# define ITERATION_BUTTON(B) (ITERATION_UP(B) || ITERATION_DOWN(B))
+
+/*
+** Fractal window
+** Info window
+** Current fractal type
+** Current color mode
+** Array of fractal functions
+** Array of color functions
+** Max iterations
+** Bail value
+** Min value for Newton fractal
+** Max value for Newton fractal
+** X scaling step
+** Y scaling step
+** Scale from
+** Scale to
+*/
 
 typedef struct			s_fractal
 {
-	t_window			*w;
-	t_window			*i;
+	t_window			*window;
+	t_window			*info;
 	int					type;
 	int					mode;
+	int					(*f[FRACTALS])(struct s_fractal *f,
+									long double i, long double j);
+	int					(*c[COLOR_MODES])(struct s_fractal *f, int iter);
 	int					max_iter;
 	int					bail;
 	long double			min;
 	long double			max;
-	int					(*f[FRACTALS])(struct s_fractal *f,
-									long double i, long double j);
-	int					(*c[COLOR_MODES])(struct s_fractal *f, int iter);
 	long double			sx;
 	long double			sy;
-	long double			sf;
-	long double			st;
+	long double			sxf;
+	long double			sxt;
+	long double			syf;
+	long double			syt;
 }						t_fractal;
 
 typedef struct			s_fractal_thread
 {
-	int					fy;
-	int					ty;
 	int					fx;
 	int					tx;
 	t_fractal			*f;

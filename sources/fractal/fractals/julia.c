@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 21:23:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/28 20:05:16 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:28:23 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int						julia(t_fractal *f, long double i, long double j)
 	long double			b;
 
 	n = 0;
-	a = ((2) * (float)(f->w->mouse->current->x)) /
-	 	(f->w->width) - 1;
-	b = ((2) * (float)(f->w->mouse->current->y)) /
-	 	(f->w->height) - 1;
+	a = (long double)(f->window->mouse->current->x) /
+		((f->window->width) / (f->sxt - f->sxf)) + f->sxf;
+	b = (long double)(f->window->mouse->current->y) /
+		((f->window->height) / (f->syt - f->syf)) + f->syf;
 	while (n < f->max_iter)
 	{
 		if (i * i + j * j > f->bail)

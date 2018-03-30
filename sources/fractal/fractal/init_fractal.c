@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 00:33:12 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 21:48:50 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static void				init_color_functions(t_fractal *f)
 
 static void				init_hooks(t_fractal *f)
 {
-	add_hook(f->w, MOUSE_MOVE, &mouse_move_hook, f);
-	add_hook(f->w, KEY_PRESS, &key_press_hook, f);
-	add_hook(f->w, MOUSE_BUTTON_PRESS, &mouse_press_hook, f);
-	add_hook(f->w, MOUSE_BUTTON_RELEASE, &mouse_release_hook, f);
+	add_hook(f->window, MOUSE_MOVE, &mouse_move_hook, f);
+	add_hook(f->window, KEY_PRESS, &key_press_hook, f);
+	add_hook(f->window, MOUSE_BUTTON_PRESS, &mouse_press_hook, f);
+	add_hook(f->window, MOUSE_BUTTON_RELEASE, &mouse_release_hook, f);
 }
 
 static void				init_info(t_fractal *f)
 {
-	add_hook(f->i, KEY_PRESS, &info_key_press, f);
+	add_hook(f->info, KEY_PRESS, &info_key_press, f);
 }
 
 int						init_fractal(t_fractal **f, int ac, char **av)
@@ -55,9 +55,9 @@ int						init_fractal(t_fractal **f, int ac, char **av)
 			ft_memdel((void**)f);
 			return (0);
 		}
-		(*f)->i = get_window("Information", INFO_WIN_SIZE,
+		(*f)->info = get_window("Information", INFO_WIN_SIZE,
 											INFO_WIN_SIZE);
-		(*f)->w = get_window(av[0], WIN_DEF_WIDTH,
+		(*f)->window = get_window(av[0], WIN_DEF_WIDTH,
 									WIN_DEF_HEIGHT);
 		init_default_values(*f);
 		init_hooks(*f);
