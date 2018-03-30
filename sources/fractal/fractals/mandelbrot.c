@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 01:22:56 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 12:53:45 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int						mandelbrot(t_fractal *f, long double i, long double j)
 	long double			b;
 
 	n = 0;
-	a = j;
-	b = i;
+	a = i;
+	b = j;
 	while (n < f->max_iter)
 	{
 		if (a * a + b * b > f->bail)
 			break ;
 		complex_pow_2(&a, &b);
-		a += j;
-		b += i;
+		a += i;
+		b += j;
 		n++;
 	}
 	return (n);

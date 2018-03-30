@@ -6,7 +6,7 @@
 #    By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/20 14:34:22 by modnosum          #+#    #+#              #
-#    Updated: 2018/03/26 18:41:48 by modnosum         ###   ########.fr        #
+#    Updated: 2018/03/30 12:47:52 by modnosum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ INC_DIR					= ./includes
 
 # Source and object lists as well as directories for objects
 SRCS					:= $(shell find $(SRC_DIR) -type f -name "*.c")
+INCS					:= $(shell find $(INC_DIR) -type f -name "*.h")
 OBJS					:= $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(SRCS:.c=.o))
 OBJ_DIRS				:= $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(shell\
 find $(SRC_DIR) -type d))
@@ -52,7 +53,7 @@ endif
 include ColorOut.mk 
 
 # Named rules
-all: $(MLX_NAME) $(NAME)
+all: $(NAME)
 clean:
 	@rm -fR $(OBJ_DIR)
 	@rm -fR $(MLX_NAME)
@@ -68,7 +69,7 @@ endif
 re: fclean all
 
 # Variable rules
-$(NAME): $(FT_NAME) $(OBJS)
+$(NAME): $(MLX_NAME) $(FT_NAME) $(OBJS) $(INCS)
 	@$(CC) -o $@ $(OBJS) *.a $(CFLAGS) $(IFLAGS) $(LFLAGS)
 	$(call PRINT,$(GREEN),"Build $@.")
 

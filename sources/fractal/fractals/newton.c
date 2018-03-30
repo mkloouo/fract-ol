@@ -6,14 +6,14 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 04:44:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/28 20:05:12 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/30 13:03:58 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 #include <math.h>
 
-static void				nuzhno_bolshe_peremennyh(long double *a,
+static void				complex_pow_3(long double *a,
 						long double *b,
 						long double *c,
 						long double *d)
@@ -39,13 +39,13 @@ int						newton(t_fractal *f, long double i, long double j)
 	long double			d;
 
 	n = 0;
-	c = j;
-	d = i;
+	c = i;
+	d = j;
 	while (n < f->max_iter)
 	{
 		if (i * i + j * j >= f->max || c * c + d * d <= f->min)
 			break ;
-		nuzhno_bolshe_peremennyh(&i, &j, &c, &d);
+		complex_pow_3(&j, &i, &c, &d);
 		n++;
 	}
 	return (n);
