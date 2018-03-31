@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 21:48:50 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:02:16 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,21 @@ static void				init_hooks(t_fractal *f)
 	add_hook(f->window, MOUSE_BUTTON_RELEASE, &mouse_release_hook, f);
 }
 
-static void				init_info(t_fractal *f)
+int						init_fractal(int ac, char **av)
 {
-	add_hook(f->info, KEY_PRESS, &info_key_press, f);
-}
+	t_fractal			*f;
 
-int						init_fractal(t_fractal **f, int ac, char **av)
-{
-	if (ac == 2 && f && (*f = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
+	if (ac == 2 && (f = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
 	{
-		if (((*f)->type = get_fractal(av[1])) == -1)
-		{
-			ft_memdel((void**)f);
+		if ((f->type = get_fractal(av[1])) == -1)
 			return (0);
-		}
-		(*f)->info = get_window("Information", INFO_WIN_SIZE,
-											INFO_WIN_SIZE);
-		(*f)->window = get_window(av[0], WIN_DEF_WIDTH,
+		f->window = get_window(av[0], WIN_DEF_WIDTH,
 									WIN_DEF_HEIGHT);
-		init_default_values(*f);
-		init_hooks(*f);
-		init_info(*f);
-		init_fractal_functions(*f);
-		init_color_functions(*f);
-		update_fractal(*f);
+		init_default_values(f);
+		init_hooks(f);
+		init_fractal_functions(f);
+		init_color_functions(f);
+		update_fractal(f);
 		return (1);
 	}
 	return (0);

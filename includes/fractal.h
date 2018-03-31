@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 22:03:51 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:02:56 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,9 @@
 # define ITERATION_DOWN(B) (B == NUM_MINUS_KC)
 # define ITERATION_BUTTON(B) (ITERATION_UP(B) || ITERATION_DOWN(B))
 
-/*
-** Fractal window
-** Info window
-** Current fractal type
-** Current color mode
-** Array of fractal functions
-** Array of color functions
-** Max iterations
-** Bail value
-** Min value for Newton fractal
-** Max value for Newton fractal
-** X scaling step
-** Y scaling step
-** Scale from
-** Scale to
-*/
-
 typedef struct			s_fractal
 {
 	t_window			*window;
-	t_window			*info;
 	int					type;
 	int					mode;
 	int					(*f[FRACTALS])(struct s_fractal *f,
@@ -94,12 +76,11 @@ typedef struct			s_fractal_thread
 	pthread_t			thread;
 }						t_fractal_thread;
 
-int						init_fractal(t_fractal **f, int ac, char **av);
+int						init_fractal(int ac, char **av);
 void					init_default_values(t_fractal *f);
 void					delete_fractal(t_fractal **fp);
 
 void					update_fractal(t_fractal *f);
-void					update_info(t_fractal *f);
 void					zoom_fractal(int in, t_fractal *f);
 
 int						mandelbrot(t_fractal *f, long double i, long double j);

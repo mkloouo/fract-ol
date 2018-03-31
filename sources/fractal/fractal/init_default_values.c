@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 06:42:45 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 21:47:18 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 13:34:27 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void					init_default_values(t_fractal *f)
 	f->sxt = DEFAULT_SCALE;
 	f->syf = -1 * DEFAULT_SCALE;
 	f->syt = DEFAULT_SCALE;
-
 }

@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:27:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 22:07:57 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:03:00 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void				*update_image(void *v)
 		{
 			set_vec3i(&pixel, i, j,
 				(ft->f->f[ft->f->type](ft->f,
-			   (ft->f->syf) + (ft->f->sy * i),
-			   (ft->f->sxf) + (ft->f->sx * j))));
+				(ft->f->syf) + (ft->f->sy * i),
+				(ft->f->sxf) + (ft->f->sx * j))));
 			pixel.z = ft->f->c[ft->f->mode](ft->f, pixel.z);
 			put_pixel(ft->f->window->image, &pixel);
 			j++;
@@ -72,6 +72,5 @@ void					update_fractal(t_fractal *f)
 	i = 0;
 	while (i < FRACTAL_THREADS)
 		pthread_join(ft[i++].thread, NULL);
-	update_info(f);
 	update_window(f->window);
 }
