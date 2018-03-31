@@ -1,1 +1,5 @@
 .vscode/
+objects/
+fractol
+*.o
+*.a
