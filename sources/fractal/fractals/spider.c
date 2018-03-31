@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   spider.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 17:45:30 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 19:00:34 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/31 17:12:06 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/31 17:19:56 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,19 @@ static void				complex_pow_2(long double *a, long double *b)
 	*b = tb;
 }
 
-int						mandelbrot(t_fractal *f, long double i, long double j)
+int						spider(t_fractal *f, long double i, long double j)
 {
 	int					n;
 	long double			a;
 	long double			b;
+	long double			c;
+	long double			d;
 
 	n = 0;
 	a = j;
 	b = i;
+	c = j;
+	d = i;
 	while (n < f->max_iter)
 	{
 		if (a * a + b * b > f->bail)
@@ -39,6 +43,8 @@ int						mandelbrot(t_fractal *f, long double i, long double j)
 		complex_pow_2(&a, &b);
 		a += j;
 		b += i;
+		j = j / 2 + a;
+		i = i / 2 + b;
 		n++;
 	}
 	return (n);

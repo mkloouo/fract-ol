@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 04:44:41 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 13:03:58 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:16:10 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int						newton(t_fractal *f, long double i, long double j)
 	{
 		if (i * i + j * j >= f->max || c * c + d * d <= f->min)
 			break ;
-		complex_pow_3(&j, &i, &c, &d);
+		complex_pow_3(&i, &j, &c, &d);
 		n++;
 	}
 	return (n);

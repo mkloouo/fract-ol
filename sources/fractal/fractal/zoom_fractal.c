@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/27 05:02:24 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 13:35:46 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:28:59 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void					zoom_fractal(int in, t_fractal *f)
 	long double			mouse_y;
 	long double			interpolation;
 
-	interpolation = 1.0 / (in ? (1.05) : (1.0 / 1.05));
-	mouse_x = (long double)(f->window->mouse->current->x) / (f->window->width /
-			(f->sxt - f->sxf)) + f->sxf;
-	mouse_y = (long double)(f->window->mouse->current->y) / (f->window->height /
-			(f->syt - f->syf)) + f->syf;
+	interpolation = (in ? 1 / (1.05) : (1.05));
+	mouse_x = (long double)(f->sxt - f->sxf) * (f->window->mouse->current->x -
+		f->mx) / (FRACTAL_WIDTH - f->mx) + f->sxf;
+	mouse_y = (long double)(f->syt - f->syf) * (f->window->mouse->current->y -
+		f->my) / (FRACTAL_HEIGHT - f->my) + f->syf;
 	f->sxf = interpolate(mouse_x, f->sxf, interpolation);
 	f->syf = interpolate(mouse_y, f->syf, interpolation);
 	f->sxt = interpolate(mouse_x, f->sxt, interpolation);

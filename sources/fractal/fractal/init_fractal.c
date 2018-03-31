@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:01:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 14:02:16 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:44:02 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ static void				init_fractal_functions(t_fractal *f)
 	f->f[1] = &julia;
 	f->f[2] = &newton;
 	f->f[3] = &burning_ship;
+	f->f[4] = &tricorn;
+	f->f[5] = &spider;
+	f->f[6] = &circle;
+	f->f[7] = &biomorph;
+	f->f[8] = &mandelbrot_custom;
 }
 
 static void				init_color_functions(t_fractal *f)
@@ -29,7 +34,7 @@ static void				init_color_functions(t_fractal *f)
 	f->c[1] = &red_color_mode;
 	f->c[2] = &green_color_mode;
 	f->c[3] = &blue_color_mode;
-	f->c[4] = &noise_color_mode;
+	f->c[4] = &sixteen_color_mode;
 	f->c[5] = &twenty_seven_color_mode;
 }
 
@@ -49,8 +54,8 @@ int						init_fractal(int ac, char **av)
 	{
 		if ((f->type = get_fractal(av[1])) == -1)
 			return (0);
-		f->window = get_window(av[0], WIN_DEF_WIDTH,
-									WIN_DEF_HEIGHT);
+		f->window = get_window(av[0], FRACTAL_WIDTH,
+									FRACTAL_HEIGHT);
 		init_default_values(f);
 		init_hooks(f);
 		init_fractal_functions(f);

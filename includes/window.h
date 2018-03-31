@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:12:20 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 13:33:53 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 15:22:06 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <mouse.h>
 # include <keyboard.h>
 # include <image.h>
-
-# define WIN_DEF_WIDTH 1000
-# define WIN_DEF_HEIGHT 1000
 
 # define KEY_RELEASE 3
 # define KEY_RELEASE_MASK (1L << 1)
@@ -53,7 +50,7 @@ void					delete_window(t_window **wp);
 void					clear_window(t_window *w);
 void					update_window(t_window *w);
 void					put_string_to_window(t_window *w, char *str,
-											t_vec2i pos, unsigned int color);
+											t_vec2i *pos, unsigned int color);
 
 void					add_hook(t_window *w, int type, int (*func)(),
 						void *func_argument);

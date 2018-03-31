@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:55:19 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 22:05:27 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:38:07 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int						key_press_hook(int btn, t_fractal *f)
 		f->type = (f->type + 1) % FRACTALS;
 	else if (ITERATION_BUTTON(btn))
 		f->max_iter += ITERATION_UP(btn) ? (1) : (-1);
+	else if (NOISE_BUTTON(btn))
+		f->noise = f->noise ? 0 : 1;
 	else
 	{
 		ft_putstr("key: ");

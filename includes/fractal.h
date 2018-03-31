@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 19:48:42 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 14:02:56 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:39:30 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 # include <window.h>
 # include <pthread.h>
 
-# define FRACTALS 4
+# define FRACTALS 9
 # define COLOR_MODES 6
 # define FRACTAL_THREADS 4
-# define INFO_WIN_SIZE 350
+
+# define FRACTAL_WIDTH 900
+# define FRACTAL_HEIGHT 900
+
+# define INFO_OFFSET 10
 
 # define MANDELBROT_TYPE 0
 # define MANDELBROT_NAME "Mandelbrot"
@@ -32,6 +36,21 @@
 
 # define BURNING_SHIP_TYPE 3
 # define BURNING_SHIP_NAME "Burning Ship"
+
+# define TRICORN_TYPE 4
+# define TRICORN_NAME "Tricorn"
+
+# define SPIDER_TYPE 5
+# define SPIDER_NAME "Spider"
+
+# define CIRCLE_TYPE 6
+# define CIRCLE_NAME "Circle"
+
+# define BIOMORPH_TYPE 7
+# define BIOMORPH_NAME "Biomorph"
+
+# define MANDELBROT_CUSTOM_TYPE 8
+# define MANDELBROT_CUSTOM_NAME "Mandelbrot Custom"
 
 # define DEFAULT_ZOOM 2
 # define DEFAULT_MAX_ITER 20
@@ -47,6 +66,7 @@
 # define ITERATION_UP(B) (B == NUM_PLUS_KC)
 # define ITERATION_DOWN(B) (B == NUM_MINUS_KC)
 # define ITERATION_BUTTON(B) (ITERATION_UP(B) || ITERATION_DOWN(B))
+# define NOISE_BUTTON(B) (B == N_KC)
 
 typedef struct			s_fractal
 {
@@ -58,6 +78,9 @@ typedef struct			s_fractal
 	int					(*c[COLOR_MODES])(struct s_fractal *f, int iter);
 	int					max_iter;
 	int					bail;
+	int					mx;
+	int					my;
+	int					noise;
 	long double			min;
 	long double			max;
 	long double			sx;
@@ -88,12 +111,18 @@ int						julia(t_fractal *f, long double i, long double j);
 int						newton(t_fractal *f, long double i, long double j);
 int						burning_ship(t_fractal *f, long double i,
 						long double j);
+int						tricorn(t_fractal *f, long double i, long double j);
+int						spider(t_fractal *f, long double i, long double j);
+int						circle(t_fractal *f, long double i, long double j);
+int						biomorph(t_fractal *f, long double i, long double j);
+int						mandelbrot_custom(t_fractal *f, long double i,
+						long double j);
 
 int						bw_color_mode(t_fractal *f, int iter);
 int						red_color_mode(t_fractal *f, int iter);
 int						green_color_mode(t_fractal *f, int iter);
 int						blue_color_mode(t_fractal *f, int iter);
-int						noise_color_mode(t_fractal *f, int iter);
+int						sixteen_color_mode(t_fractal *f, int iter);
 int						twenty_seven_color_mode(t_fractal *f, int iter);
 
 int						mouse_move_hook(int x, int y, t_fractal *f);

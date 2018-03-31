@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press_hook.c                                 :+:      :+:    :+:   */
+/*   tricorn.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/25 19:23:06 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/31 15:10:51 by modnosum         ###   ########.fr       */
+/*   Created: 2018/03/31 15:28:34 by modnosum          #+#    #+#             */
+/*   Updated: 2018/03/31 15:32:08 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractal.h>
 
-int						mouse_press_hook(int btn, int x, int y, t_fractal *f)
+static void				complex_pow_2(long double *a, long double *b)
 {
-	if (IN_IMAGE(x, y, FRACTAL_WIDTH, FRACTAL_HEIGHT))
+	long double			ta;
+	long double			tb;
+
+	ta = *a * *a - *b * *b;
+	tb = -2 * *a * *b;
+	*a = ta;
+	*b = tb;
+}
+
+int						tricorn(t_fractal *f, long double i, long double j)
+{
+	int					n;
+	long double			a;
+	long double			b;
+
+	n = 0;
+	a = j;
+	b = i;
+	while (n < f->max_iter)
 	{
-		if (MOUSE_SCROLL(btn))
-		{
-			zoom_fractal(SCROLL_UP_BUTTON(btn), f);
-			update_fractal(f);
-		}
-		set_vec2i(f->window->mouse->press, x, y);
-		f->window->mouse->btn = btn;
-		f->window->mouse->pressed = 1;
+		if (a * a + b * b > f->bail)
+			break ;
+		complex_pow_2(&a, &b);
+		a += j;
+		b += i;
+		n++;
 	}
-	return (0);
+	return (n);
 }

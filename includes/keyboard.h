@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:19:39 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 22:05:49 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 19:38:54 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 #  define Z_KC 6
 #  define X_KC 7
 #  define C_KC 8
-#  define F_KC -1
+#  define F_KC 3
+#  define N_KC 45
 
 #  define SHIFT_KC 257
 
@@ -57,6 +58,7 @@
 #  define X_KC 120
 #  define C_KC 99
 #  define F_KC 102
+#  define N_KC -1
 
 #  define SHIFT_KC 65505
 

@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 23:22:29 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 13:03:10 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 18:42:51 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int						burning_ship(t_fractal *f, long double i, long double j)
 	long double			b;
 
 	n = 0;
-	a = i;
-	b = j;
+	a = j;
+	b = i;
 	while (n < f->max_iter)
 	{
 		if (a * a + b * b > f->bail)
 			break ;
 		complex_pow_2(&a, &b);
-		a += i;
-		b += j;
+		a += j;
+		b += i;
 		n++;
 	}
 	return (n);

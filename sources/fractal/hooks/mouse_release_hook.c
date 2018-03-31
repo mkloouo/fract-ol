@@ -6,7 +6,7 @@
 /*   By: modnosum <modnosum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/25 19:28:12 by modnosum          #+#    #+#             */
-/*   Updated: 2018/03/30 21:49:33 by modnosum         ###   ########.fr       */
+/*   Updated: 2018/03/31 15:10:39 by modnosum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int						mouse_release_hook(int btn, int x, int y, t_fractal *f)
 {
-	if (IN_IMAGE(x, y, f->window->image->width, f->window->image->height))
+	if (IN_IMAGE(x, y, FRACTAL_WIDTH, FRACTAL_HEIGHT))
 	{
 		set_vec2i(f->window->mouse->release, x, y);
 		f->window->mouse->btn = btn;
