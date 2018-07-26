@@ -28,14 +28,10 @@ int						spider(t_fractal *f, long double i, long double j)
 	int					n;
 	long double			a;
 	long double			b;
-	long double			c;
-	long double			d;
 
 	n = 0;
 	a = j;
 	b = i;
-	c = j;
-	d = i;
 	while (n < f->max_iter)
 	{
 		if (a * a + b * b > f->bail)

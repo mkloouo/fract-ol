@@ -21,9 +21,9 @@ MFLAGS					= --no-print-directory -C
 NAME					:= fractol
 
 # Directories
-SRC_DIR					= ./sources
-OBJ_DIR					= ./objects
-INC_DIR					= ./includes
+SRC_DIR					= ./src
+OBJ_DIR					= ./build
+INC_DIR					= ./inc
 
 # Source and object lists as well as directories for objects
 SRCS					:= $(shell find $(SRC_DIR) -type f -name "*.c")
